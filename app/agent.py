@@ -22,3 +22,7 @@ root_agent = Agent(
     tools=[google_search]
 )
 
+app = App(
+    root_agent=root_agent,
+    name="app",
+)
