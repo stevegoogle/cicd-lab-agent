@@ -6,12 +6,9 @@ WORKDIR /code
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy agent code and entry point
+# Copy agent code to container image
 COPY ./app ./app
 
 EXPOSE 8080
 
-# Cloud Run expects the app to listen on the $PORT environment variable
-#CMD ["sh", "-c", "uvicorn main:app --host 0.0.0.0 --port $PORT"]
 CMD ["python", "-m", "uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8080"]
-#CMD ["uv", "run", "uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8080"]
