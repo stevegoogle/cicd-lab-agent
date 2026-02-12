@@ -3,10 +3,6 @@ import uvicorn
 from google.adk.cli.fast_api import get_fast_api_app
 from fastapi import FastAPI
 
-# Even if we don't pass 'root_agent' directly, we must import it 
-# so the ADK loader can find it in the directory scan.
-# from agent import root_agent 
-
 AGENT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Get the absolute path of the directory containing main.py
@@ -19,7 +15,7 @@ app: FastAPI = get_fast_api_app(
     #artifact_service_uri=artifact_service_uri,
     #allow_origins=allow_origins,
     #session_service_uri=session_service_uri,
-    otel_to_cloud=True,
+    #otel_to_cloud=True,
 )
 app.title = "lab-agent"
 app.description = "API for interacting with the Agent lab-agent"
